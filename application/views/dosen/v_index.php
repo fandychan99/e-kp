@@ -102,8 +102,8 @@
                                     <div class="col-6">
                                         <label class="form-label">Jenis Kelamin</label>
                                         <select name="sex" id="sex" class="form-control" required>
-                                            <option value="Man">Laki - Laki</option>
-                                            <option value="Woman">Perempuan</option>
+                                            <option value="Laki - Laki">Laki - Laki</option>
+                                            <option value="Perempuan">Perempuan</option>
                                         </select>
                                     </div>
                                     <div class="col-6">

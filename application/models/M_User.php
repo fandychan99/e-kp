@@ -41,7 +41,7 @@ class M_User extends CI_Model {
     }
 
     public function get_profile($id){
-        if($this->session->userdata('role') == 2){
+        if($this->session->userdata('role') != 4){
             $query = "SELECT * FROM vw_user_dosen where user_id = '$id'";
         }else{
             $query = "SELECT * FROM vw_user_mahasiswa where user_id = '$id'";

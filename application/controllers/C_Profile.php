@@ -6,7 +6,7 @@ class C_Profile extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model(array('M_User', 'M_Profile'));
+        $this->load->model(array('M_User', 'M_Profile', 'M_Mahasiswa'));
         $this->load->library('upload');
         $this->load->helper('url');
         $this->load->helper('form');
@@ -26,11 +26,10 @@ class C_Profile extends CI_Controller
     function index()
     {
         $data["data_user"] = $this->M_User->get_profile($this->session->userdata('userid'));
-        if ($this->role == 2) {
+        if ($this->role != 4) {
             $this->template->display("profile/v_index_dosen", $data);
         } else {
-            // $data["isi_chart"] = $this->M_Profile->get_chart($this->session->userdata('userid'));
-            // $data["history_consul"] = $this->M_Chat->get_consul_user($this->session->userdata('userid'));
+            $data["_jurusan"] = $this->M_Mahasiswa->list_jurusan();
             $this->template->display("profile/v_index_mahasiswa", $data);
         }
     }
@@ -39,7 +38,7 @@ class C_Profile extends CI_Controller
     {
         $config['upload_path'] = './assets/images/user/'; // Tentukan direktori penyimpanan gambar
         $config['allowed_types'] = 'jpg|jpeg|png|gif'; // Jenis file yang diizinkan
-        $config['max_size'] = 2048; // Batasan ukuran file (dalam kilobyte)
+        // $config['max_size'] = 2048; // Batasan ukuran file (dalam kilobyte)
 
         $this->upload->initialize($config);
 
@@ -51,7 +50,6 @@ class C_Profile extends CI_Controller
             // Jika upload berhasil, dapatkan informasi file yang diunggah
             $data = $this->upload->data();
             $data_simpan = array(
-                "name" => $this->input->post("nama_user"),
                 "image" => $data['file_name']
             );
             
