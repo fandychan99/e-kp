@@ -1,12 +1,12 @@
 <!--breadcrumb-->
 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-    <div class="breadcrumb-title pe-3">Database Dosen</div>
+    <div class="breadcrumb-title pe-3">Database Mahasiswa</div>
     <div class="ps-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-cog"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">List Dosen</li>
+                <li class="breadcrumb-item active" aria-current="page">List Mahasiswa</li>
             </ol>
         </nav>
     </div>
@@ -34,7 +34,7 @@
                     <thead class="table-light">
                         <tr>
                             <th>Nama</th>
-                            <th>Nip</th>
+                            <th>Nim</th>
                             <th>JK</th>
                             <th>Alamat</th>
                             <th>No HP</th>
@@ -46,15 +46,15 @@
                         foreach ($_data as $r) {
                         ?>
                             <tr>
-                                <td><?=$r->name?></td>
-                                <td><?=$r->nip?></td>
-                                <td><?=$r->sex?></td>
-                                <td><?=$r->address?></td>
-                                <td><?=$r->phone?></td>
+                                <td><?= $r->name ?></td>
+                                <td><?= $r->nim ?></td>
+                                <td><?= $r->sex ?></td>
+                                <td><?= $r->address ?></td>
+                                <td><?= $r->phone ?></td>
                                 <td>
                                     <div class="d-flex align-items-center gap-3 fs-6">
                                         <!-- <a class="text-warning" onclick="return confirm('Sure to Edit it ? ')" href="<?= base_url() ?>C_User?id=<?= encrypt_url($r->user_id) ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a> -->
-                                        <a class="text-danger" onclick="return confirm('Yakin mau hapus data <?=$r->name?> ? ')" href="<?= base_url() ?>C_Dosen/delete?id=<?= encrypt_url($r->user_id) ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
+                                        <a class="text-danger" onclick="return confirm('Yakin mau hapus data <?=$r->name?> ? ')" href="<?= base_url() ?>C_Mahasiswa/delete?id=<?= encrypt_url($r->user_id) ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -79,7 +79,7 @@
             <div class="modal-body">
                 <div class="card shadow-sm border-0">
                     <div class="card-body">
-                        <?= form_open(base_url('C_Dosen/Save'), "id='formuser'") ?>
+                        <?= form_open(base_url('C_Mahasiswa/Save'), "id='formuser'") ?>
                         <div class="card shadow-none border">
                             <div class="card-header">
                                 <h6 class="mb-0">USER INFORMATION</h6>
@@ -87,9 +87,9 @@
                             <div class="card-body">
                                 <div class="row g-3">
                                     <div class="col-6">
-                                        <label class="form-label">NIP</label>
+                                        <label class="form-label">NIM</label>
                                         <input type="hidden" name="action" value="add">
-                                        <input type="text" class="form-control" value="" name="nip">
+                                        <input type="text" class="form-control" value="" name="nim">
                                     </div>
                                     <div class="col-6">
                                         <label class="form-label">Nama</label>
@@ -115,12 +115,15 @@
                                         <input type="text" class="form-control" name="phone" value="" required>
                                     </div>
                                     <div class="col-6">
-                                        <label class="form-label">Pendidikan Terakhir</label>
-                                        <input type="text" class="form-control" name="study" value="" required>
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="form-label">Gelar</label>
-                                        <input type="text" class="form-control" name="gelar" value="" required>
+                                        <label class="form-label">Jurusan</label>
+                                        <select name="jurusan" id="jurusan" class="form-control">
+                                            <option value="-">Pilih Jururan</option>
+                                            <?php 
+                                                foreach ($_jurusan as $r) {
+                                                    echo "<option value='$r->name'>$r->name</option>";
+                                                }
+                                            ?>
+                                        </select>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label">Alamat</label>

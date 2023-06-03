@@ -15,7 +15,7 @@
                     console.log(data);
                     if(data.status == 'success'){
                         alert(data.msg);
-                        window.location.assign("<?=base_url('C_Profile'); ?>");
+                        window.location.assign("<?=base_url(''); ?>");
                     }else{
                         alert(data.msg);
                     }

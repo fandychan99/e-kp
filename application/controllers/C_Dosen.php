@@ -34,4 +34,28 @@ class C_Dosen extends CI_Controller
             redirect("C_Dosen?msg=failed");
         }
     }
+
+    function update(){
+        if($this->M_Dosen->Save()){
+            redirect("C_Dosen?msg=success");
+        } else{
+            redirect("C_Dosen?msg=failed");
+        }
+    }
+
+    public function delete()
+    {
+        $id = decrypt_url($this->input->get("id"));
+        $query = "DELETE FROM utl_user_dosen where user_id = '$id'";
+        $query2 = "DELETE FROM utl_user where user_id = '$id'";
+
+        $this->db->query($query2);
+        $hapus = $this->db->query($query);
+
+        if($hapus){
+            redirect("C_Dosen?msg=Dosen Has Been Deleted ");
+        }else{
+            redirect("C_Dosen?msg=Dosen Failed to Deleted ".$id);
+        }
+    }
 }
