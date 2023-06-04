@@ -39,7 +39,7 @@
                 <form class="row g-3" method="POST" action="<?=base_url()?>C_Profile/Update_Mahasiswa">
                     <div class="col-6">
                         <label class="form-label">NIM</label>
-                        <input type="text" class="form-control" name="name" value="<?= $data_user->nim; ?>" readonly>
+                        <input type="text" class="form-control" name="nim" value="<?= $data_user->nim; ?>" readonly>
                     </div>
                     <div class="col-6">
                         <label class="form-label">Nama</label>

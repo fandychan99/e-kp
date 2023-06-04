@@ -72,8 +72,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 <?php } ?>
-                <table class="table align-middle mb-0">
-                    <thead class="table-light">
+                <table class="table align-middle mb-0" id="dtbl">
+                    <thead class="table-light" >
                         <tr>
                             <th>No</th>
                             <th>Tanggal Bimbingan</th>
@@ -158,3 +158,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#dtbl').DataTable();
+    });
+</script>

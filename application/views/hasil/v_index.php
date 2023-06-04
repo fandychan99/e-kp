@@ -26,7 +26,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 <?php } ?>
-                <table class="table align-middle mb-0">
+                <table class="table align-middle mb-0" id="dtbl">
                     <thead class="table-light">
                         <tr>
                             <th>Nama</th>
@@ -108,6 +108,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#dtbl').DataTable();
+    });
+</script>
 
 <script>
     function set_modal($id) {

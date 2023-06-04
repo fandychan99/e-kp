@@ -6,7 +6,7 @@ class C_Profile extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model(array('M_User', 'M_Profile', 'M_Mahasiswa'));
+        $this->load->model(array('M_User', 'M_Profile', 'M_Mahasiswa', 'M_Dosen'));
         $this->load->library('upload');
         $this->load->helper('url');
         $this->load->helper('form');
@@ -60,6 +60,24 @@ class C_Profile extends CI_Controller
             } else {
                 redirect("C_Profile?msg=failed");
             }
+        }
+    }
+
+    function Update_Dosen(){
+        // $this->M_Dosen->update();
+        if($this->M_Dosen->update()){
+            redirect("C_Profile?msg=success");
+        } else{
+            redirect("C_Profile?msg=failed");
+        }
+    }
+
+    function Update_Mahasiswa(){
+        // $this->M_Mahasiswa->update();
+        if($this->M_Mahasiswa->update()){
+            redirect("C_Profile?msg=success");
+        } else{
+            redirect("C_Profile?msg=failed");
         }
     }
 }

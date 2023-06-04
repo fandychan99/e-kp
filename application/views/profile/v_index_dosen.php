@@ -36,10 +36,10 @@
             <div class="card-body">
                 <h4>Data Diri</h4>
                 <hr>
-                <form class="row g-3" method="POST" action="<?=base_url()?>C_Profile/Update_Mahasiswa">
+                <form class="row g-3" method="POST" action="<?=base_url()?>C_Profile/Update_Dosen">
                     <div class="col-6">
                         <label class="form-label">NIP</label>
-                        <input type="text" class="form-control" name="name" value="<?= $data_user->nip; ?>" readonly>
+                        <input type="text" class="form-control" name="nim" value="<?= $data_user->nip; ?>" readonly>
                     </div>
                     <div class="col-6">
                         <label class="form-label">Nama</label>
@@ -67,11 +67,11 @@
                     </div>
                     <div class="col-6">
                         <label class="form-label">Pendidikan Terakhir</label>
-                        <input type="text" class="form-control" name="phone" value="<?= $data_user->study; ?>">
+                        <input type="text" class="form-control" name="study" value="<?= $data_user->study; ?>">
                     </div>
                     <div class="col-6">
                         <label class="form-label">Gelar</label>
-                        <input type="text" class="form-control" name="phone" value="<?= $data_user->gelar; ?>">
+                        <input type="text" class="form-control" name="gelar" value="<?= $data_user->gelar; ?>">
                     </div>
                     <div class="col-12">
                         <label class="form-label">Alamat</label>

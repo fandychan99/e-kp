@@ -56,7 +56,7 @@
                     ?>
                 </div>
                 <br>
-                <table class="table align-middle mb-0">
+                <table class="table align-middle mb-0" id="dtbl">
                     <thead class="table-light">
                         <tr>
                             <th>Diajukan Oleh</th>
@@ -103,7 +103,7 @@
                 </table>
             </div>
             <div class="tab-pane fade" id="primaryprofile" role="tabpanel">
-                <table class="table align-middle mb-0">
+                <table class="table align-middle mb-0" id="dtbl2">
                     <thead class="table-light">
                         <tr>
                             <th>Diajukan Oleh</th>
@@ -148,7 +148,7 @@
                 </table>
             </div>
             <div class="tab-pane fade" id="primarycontact" role="tabpanel">
-                <table class="table align-middle mb-0">
+                <table class="table align-middle mb-0" id="dtbl3">
                     <thead class="table-light">
                         <tr>
                             <th>Diajukan Oleh</th>
@@ -314,6 +314,14 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#dtbl').DataTable();
+        $('#dtbl2').DataTable();
+        $('#dtbl3').DataTable();
+    });
+</script>
 
 <script>
     function set_modal($id) {

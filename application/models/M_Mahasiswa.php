@@ -20,12 +20,12 @@ class M_Mahasiswa extends CI_Model
         $address = $this->input->post("address");
         $email = $this->input->post("email");
         $phone = $this->input->post("phone");
-        $jurusan = $this->input->post("jurursan");
+        $jurusan = $this->input->post("jurusan");
         $user = $this->session->userdata("userid");
 
         $query = "INSERT INTO utl_user_mahasiswa(user_id, name, nim, sex, born, address, email, phone, jurusan, created_by, created_date )
                                     VALUES ('$nip', '$name', '$nip', '$sex', '$born', '$address', '$email', '$phone', '$jurusan', '$user', now())";
-        echo $query;
+        // echo $query;
         $this->db->query($query);
 
         $data =  array(
@@ -38,6 +38,29 @@ class M_Mahasiswa extends CI_Model
         );
 
         return $this->db->insert("utl_user", $data);
+    }
+
+    function update(){
+        $name = $this->input->post("name");
+        $nip = $this->input->post("nim");
+        $sex = $this->input->post("sex");
+        $born = $this->input->post("born");
+        $address = $this->input->post("address");
+        $email = $this->input->post("email");
+        $phone = $this->input->post("phone");
+        $jurusan = $this->input->post("jurusan");
+        $user = $this->session->userdata("userid");
+
+        // $query = "INSERT INTO utl_user_mahasiswa(user_id, name, nim, sex, born, address, email, phone, jurusan, created_by, created_date )
+        //                             VALUES ('$nip', '$name', '$nip', '$sex', '$born', '$address', '$email', '$phone', '$jurusan', '$user', now())";
+        
+        $query = "UPDATE utl_user_mahasiswa SET name = '$name', nim = '$nip', sex = '$sex', born = '$born', address = '$address',
+                         email = '$email', phone = '$phone', jurusan = '$jurusan' WHERE user_id = '$user'";
+
+                         echo $query;
+
+        $this->db->query("UPDATE utl_user SET name = '$name' where user_id = '$user'");
+        return $this->db->query($query);
     }
 
     function list_jurusan(){
